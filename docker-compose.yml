@@ -1,0 +1,25 @@
+version: '2.4'
+services:
+  backend:
+    build:
+      context: ./backend
+    image: backend
+    environment:
+      - NODE_ENV=development
+      - OMDb_PERSONAL_ACCESS_TOKEN=ad80c474
+    volumes:
+      - ./backend/src:/app/src
+    ports:
+      - "3003:3003"
+
+  frontend:
+    build:
+      context: ./frontend
+    image: frontend
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend/app:/app/app
+    ports:
+      - "3000:3000"
+    depends_on: [ backend ]
