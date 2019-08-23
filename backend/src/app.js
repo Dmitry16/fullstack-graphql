@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const apiSearchRouter = require('./routes/apiSearch');
+const graphQLRouter = require('./routes/graphQL');
 
 const app = express();
 
@@ -32,6 +33,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/search', apiSearchRouter);
+
+app.use('/graphql', graphQLRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

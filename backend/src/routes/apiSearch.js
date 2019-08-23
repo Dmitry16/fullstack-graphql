@@ -62,7 +62,7 @@ function sendData(res, searchKeyword, data) {
     console.log('cachedDataStats:', cache.getStats());
     cache.set(searchKeyword, JSON.stringify(recievedData));
 
-    recievedData && console.log('data::', recievedData);
+    recievedData && console.log('recievedData::', recievedData);
 
     res.status(200).send(recievedData);
   }
