@@ -1,3 +1,6 @@
+const httpClient = require('../api');
+const axios = require('axios');
+
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -14,8 +17,12 @@ module.exports = new GraphQLSchema({
     fields: () => ({
       greeting: {
         type: GraphQLString,
-        resolve: (source, args) => 'kuku'
-      },
-    })
+        resolve: async (source, args) => {
+          const data = await httpClient.fetchOmdbApi.getMovies(axios, 'rock', 1);
+          console.log('dataaaaa:::', data);
+          return data;
+        }
+      }
+    }),
   })
 });

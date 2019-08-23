@@ -5,16 +5,11 @@ const graphqlHTTP = require('express-graphql')
 
 const schema = require('../graphql-schema');
 
-router.get('/', graphqlHTTP( async (req) => {
-
-  const data = await httpClient.fetchOmdbApi.getMovies(axios, 'rock', 1);
-
-  console.log('zzzzzzzz', data);
-  
-  return {
+router.get('/', graphqlHTTP(
+  {
     schema: schema,
     graphiql: true
   }
-}));
+));
 
 module.exports = router;

@@ -34,7 +34,16 @@ app.use((req, res, next) => {
 
 app.use('/api/search', apiSearchRouter);
 
-app.use('/graphql', graphQLRouter);
+// app.use('/graphql', graphQLRouter);
+const graphqlHTTP = require('express-graphql')
+const schema = require('./graphql-schema');
+
+app.use('/graphql', graphqlHTTP(
+  {
+    schema: schema,
+    graphiql: true
+  }
+));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
