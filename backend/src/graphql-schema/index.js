@@ -40,7 +40,10 @@ const SearchType = new GraphQLObjectType({
   fields: () => ({
     movie: {
       type: new GraphQLList(MovieType),
-      resolve: () => 'movies here!'
+      resolve: (data) => {
+        console.log('source:::', data.Search)
+        return data.Search;
+      }
     }
   })
 })
@@ -55,7 +58,7 @@ module.exports = new GraphQLSchema({
         type: SearchType,
         resolve: async () => {
           const data = await httpClient.fetchOmdbApi.getMovies(axios, 'rock', 1);
-          console.log('dataaaaa:::', data); 
+          // console.log('dataaaaa:::', data); 
           return data;
         }
       }
