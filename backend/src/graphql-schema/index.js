@@ -14,21 +14,25 @@ const MovieType = new GraphQLObjectType({
   description: 'a movie object',
 
   fields: () => ({
-    Title: {
+    title: {
       type: GraphQLString,
-      resolve: () => 'Title!'
+      resolve: data => data.Title
     },
-    Year: {
+    year: {
       type: GraphQLString,
-      resolve: () => 'Year!'
+      resolve: data => data.Year
     },
-    Type: {
+    imdbID: {
       type: GraphQLString,
-      resolve: () => 'Type!'
+      resolve: data => data.imdbID
     },
-    Poster: {
+    type: {
       type: GraphQLString,
-      resolve: () => 'Poster!'
+      resolve: data => data.Type
+    },
+    poster: {
+      type: GraphQLString,
+      resolve: data => data.Poster
     }
   })
 });
@@ -41,7 +45,7 @@ const SearchType = new GraphQLObjectType({
     movie: {
       type: new GraphQLList(MovieType),
       resolve: (data) => {
-        console.log('source:::', data.Search)
+        // console.log('source:::', data.Search)
         return data.Search;
       }
     }
@@ -58,7 +62,7 @@ module.exports = new GraphQLSchema({
         type: SearchType,
         resolve: async () => {
           const data = await httpClient.fetchOmdbApi.getMovies(axios, 'rock', 1);
-          // console.log('dataaaaa:::', data); 
+          console.log('dataaaaa:::', data); 
           return data;
         }
       }
