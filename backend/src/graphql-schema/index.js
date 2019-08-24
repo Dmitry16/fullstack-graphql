@@ -4,7 +4,6 @@ const axios = require('axios');
 const {
   GraphQLSchema,
   GraphQLObjectType,
-  GraphQLInt,
   GraphQLString,
   GraphQLList
 } = require('graphql');
@@ -42,12 +41,9 @@ const SearchType = new GraphQLObjectType({
   description: 'Search data array',
 
   fields: () => ({
-    movie: {
+    movies: {
       type: new GraphQLList(MovieType),
-      resolve: (data) => {
-        // console.log('source:::', data.Search)
-        return data.Search;
-      }
+      resolve: data => data.Search
     }
   })
 })
@@ -62,7 +58,7 @@ module.exports = new GraphQLSchema({
         type: SearchType,
         resolve: async () => {
           const data = await httpClient.fetchOmdbApi.getMovies(axios, 'rock', 1);
-          console.log('dataaaaa:::', data); 
+          console.log('data::', data); 
           return data;
         }
       }

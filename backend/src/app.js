@@ -3,9 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-
 const apiSearchRouter = require('./routes/apiSearch');
-const graphQLRouter = require('./routes/graphQL');
 
 const app = express();
 
@@ -34,7 +32,7 @@ app.use((req, res, next) => {
 
 app.use('/api/search', apiSearchRouter);
 
-// app.use('/graphql', graphQLRouter);
+// graphQL
 const graphqlHTTP = require('express-graphql')
 const schema = require('./graphql-schema');
 
