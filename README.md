@@ -27,6 +27,10 @@ When server recieves a get request to the '/api/search' endpoint. The app perfor
 5. When all data is recieved it is checked, set to the cache and sent to the client.
 When defining the interface for working with external api I made use of ES6 classes, factory and dependency injection patterns(injecting axios) in order to get the logic abstracted from the http client and be able to better test side effects as well.
 
+GraphQL.
+
+Server is running on the port 3003 of the localhost, on the end-point http://localhost:3003/graphql the GraphiQL tool opens. 
+
 ############
 
 To make it production ready I would do better testing and error handling (consideriong all the possible cases and providing the UI with clear and user-friendly messaages), I would do cross-browser compatibility testing and better code refactoring.
