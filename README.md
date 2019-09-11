@@ -1,6 +1,6 @@
 # Description.
 
-This is a full-stack project. When typing a keyword into the input field the application fetches 20 movies with titles that include the submited keyword. The data is fetched from the "http://www.omdbapi.com/" api.
+This is a full-stack project with GraphQL. When typing a keyword into the input field the application fetches 20 movies with titles that include the submited keyword. The data is fetched from the "http://www.omdbapi.com/" api.
 
 # High Level Design overview.
 
